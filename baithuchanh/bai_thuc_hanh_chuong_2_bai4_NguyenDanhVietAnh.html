@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Employee Information Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Scrollbar for notes textarea rich editor */
+    .rich-text-toolbar {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+      margin-bottom: 4px;
+    }
+    .rich-text-toolbar button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 2px 6px;
+      margin: 0 2px;
+      font-weight: bold;
+      border-radius: 3px;
+      transition: background-color 0.2s ease;
+    }
+    .rich-text-toolbar button:hover {
+      background-color: #e5e7eb;
+    }
+    .rich-text-area {
+      border: 1px solid #ddd;
+      padding: 8px;
+      border-radius: 4px;
+      min-height: 100px;
+      resize: vertical;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+    .captcha-text {
+      font-family: monospace;
+      font-size: 1.6rem;
+      letter-spacing: 0.2em;
+      user-select: none;
+      cursor: pointer;
+      background-color: #f3f4f6;
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-right: 12px;
+    }
+    .input-note {
+      font-size: 0.85rem;
+      color: #555;
+      font-style: italic;
+      margin-left: 6px;
+      user-select: none;
+      cursor: help;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 py-8 flex justify-center">
+  <form class="bg-white p-6 rounded-md shadow-lg max-w-xl w-full" id="employeeForm" autocomplete="off" novalidate>
+    <!-- Basic Info Section -->
+    <fieldset class="border-b border-gray-300 mb-6 pb-4">
+      <legend class="font-semibold mb-3 text-gray-700 text-sm border-b border-gray-300 pb-1">Basic Info</legend>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label class="font-semibold text-gray-600" for="employeeId">Employee ID</label>
+        <span id="employeeId" class="text-gray-800 select-none">9</span>
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="lastName" class="font-semibold text-gray-600">Last Name</label>
+        <span id="lastName" class="text-gray-800 select-none">Dodsworth</span>
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-1 gap-x-4 items-center mb-2">
+        <label for="firstName" class="font-semibold text-gray-600">First Name</label>
+        <input type="text" id="firstName" name="firstName" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" value="Anne" required aria-required="true"/>
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-x-4 items-start mb-2">
+        <span class="font-semibold text-gray-600 pt-1">Gender</span>
+        <div class="flex gap-4">
+          <label class="flex items-center cursor-pointer">
+            <input type="radio" name="gender" value="Male" class="mr-1" />
+            Male
+          </label>
+          <label class="flex items-center cursor-pointer">
+            <input type="radio" name="gender" value="Female" class="mr-1" />
+            Female
+          </label>
+          <label class="flex items-center cursor-pointer">
+            <input type="radio" name="gender" value="xxx" class="mr-1" />
+            xxx
+          </label>
+          <label class="flex items-center cursor-pointer">
+            <input type="radio" name="gender" value="zzz" class="mr-1" checked />
+            zzz
+          </label>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-2 gap-x-4 items-center mb-2">
+        <label for="title" class="font-semibold text-gray-600">Title</label>
+        <input type="text" id="title" name="title" value="Sales Representative" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-2 gap-x-4 items-center mb-2">
+        <label for="suffix" class="font-semibold text-gray-600">Suffix</label>
+        <input type="text" id="suffix" name="suffix" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" value="Ms." />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-2 gap-x-4 items-center mb-2 relative">
+        <label for="birthDate" class="font-semibold text-gray-600 flex items-center">
+          BirthDate
+          <span class="input-note" title="ISO 8601 date-time format"> ( ? )</span>
+        </label>
+        <input type="datetime-local" id="birthDate" name="birthDate" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" value="1969-07-02T00:00" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-2 gap-x-4 items-center mb-2">
+        <label for="hireDate" class="font-semibold text-gray-600">HireDate</label>
+        <input type="datetime-local" id="hireDate" name="hireDate" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" value="1994-11-15T00:00" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-2 gap-x-4 items-center mb-4 relative">
+        <label for="ssn" class="font-semibold text-gray-600 flex items-center">
+          SSN # (if applicable)
+          <span class="input-note" title="Social Security Number, optional">?</span>
+        </label>
+        <input type="text" id="ssn" name="ssn" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-2 gap-x-4 items-center mb-6">
+        <label for="reportsTo" class="font-semibold text-gray-600">Reports To</label>
+        <select id="reportsTo" name="reportsTo" class="border border-gray-300 rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option>Buchanan</option>
+          <option>Fuller</option>
+          <option>Leverling</option>
+          <option>Peacock</option>
+          <option>Dodsworth</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <!-- Contact Info Section -->
+    <fieldset class="border-b border-gray-300 mb-6 pb-4">
+      <legend class="font-semibold mb-3 text-gray-700 text-sm border-b border-gray-300 pb-1">Contact Info</legend>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="email" class="font-semibold text-gray-600">Email</label>
+        <input type="email" id="email" name="email" placeholder="name@example.com" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="address" class="font-semibold text-gray-600">Address</label>
+        <input type="text" id="address" name="address" value="7 Houndstooth Rd." class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="city" class="font-semibold text-gray-600">City</label>
+        <input type="text" id="city" name="city" value="London" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="region" class="font-semibold text-gray-600">Region</label>
+        <input type="text" id="region" name="region" value="" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="postalCode" class="font-semibold text-gray-600">Postal Code</label>
+        <input type="text" id="postalCode" name="postalCode" value="WG2 7LT" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="country" class="font-semibold text-gray-600">Country</label>
+        <select id="country" name="country" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option>Russian Federation</option>
+          <option>United States</option>
+          <option>United Kingdom</option>
+          <option>France</option>
+          <option>Germany</option>
+        </select>
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center mb-2">
+        <label for="usPhone" class="font-semibold text-gray-600">US Home Phone</label>
+        <input type="tel" id="usPhone" name="usPhone" value="(234)234-2342" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+
+      <div class="grid grid-cols-[140px_1fr] gap-y-3 gap-x-4 items-center">
+        <label for="photo" class="font-semibold text-gray-600">Photo</label>
+        <input type="text" id="photo" name="photo" value="EmplD9.bmp" class="border border-gray-300 rounded px-2 py-1 text-gray-700 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      </div>
+    </fieldset>
+
+    <!-- Optional Info Section -->
+    <fieldset class="mb-6">
+      <legend class="font-semibold mb-3 text-gray-700 text-sm border-b border-gray-300 pb-1">Optional Info</legend>
+
+      <label class="block font-semibold text-gray-600 mb-1" for="notes">Notes</label>
+
+      <div>
+        <!-- Simplified rich text editor toolbar -->
+        <div class="rich-text-toolbar mb-1" role="toolbar" aria-label="Text formatting options">
+          <button type="button" title="Bold (Ctrl+B)" aria-label="Bold" data-command="bold"><strong>B</strong></button>
+          <button type="button" title="Italic (Ctrl+I)" aria-label="Italic" data-command="italic"><em>I</em></button>
+          <button type="button" title="Underline (Ctrl+U)" aria-label="Underline" data-command="underline"><u>U</u></button>
+          <button type="button" title="Insert Ordered List" aria-label="Insert Ordered List" data-command="insertOrderedList">OL</button>
+          <button type="button" title="Insert Unordered List" aria-label="Insert Unordered List" data-command="insertUnorderedList">UL</button>
+          <button type="button" title="Insert Link" aria-label="Insert Link" data-command="createLink">Link</button>
+          <button type="button" title="Remove Link" aria-label="Remove Link" data-command="unlink">Unlink</button>
+        </div>
+        <div contenteditable="true" role="textbox" aria-multiline="true" id="notes" name="notes" class="rich-text-area" spellcheck="true" aria-label="Notes text area">Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.ZZZ</div>
+      </div>
+
+      <fieldset class="mt-4 space-y-1">
+        <legend class="font-semibold text-gray-600 mb-1">Preferred Shift</legend>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="prefShift" value="Regular" id="prefShiftRegular" />
+          Regular
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="prefShift" value="Gravy Yard" checked id="prefShiftGravyYard" />
+          Gravy Yard
+        </label>
+      </fieldset>
+
+      <label class="flex items-center gap-2 mt-4 cursor-pointer" for="active">
+        <input type="checkbox" name="active" id="active" checked />
+        Active?
+      </label>
+
+      <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-4">
+        <label for="captchaInput" class="font-semibold mb-2 sm:mb-0 sm:flex-shrink-0">Are you human?</label>
+        <div class="flex items-center gap-4 shrink-0">
+          <span id="captchaText" class="captcha-text" title="Click to refresh CAPTCHA" tabindex="0" role="button" aria-label="CAPTCHA text, click to change" aria-live="polite"></span>
+          <input id="captchaInput" name="captchaInput" type="text" autocomplete="off" class="border border-gray-300 rounded px-2 py-1 w-52 focus:outline-none focus:ring-2 focus:ring-blue-400" aria-required="true" />
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="flex justify-between mt-6">
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">Submit</button>
+      <button type="reset" class="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400">Cancel</button>
+    </div>
+
+    <p class="mt-4 text-xs text-gray-600 italic">* required</p>
+  </form>
+
+  <script>
+    // Rich text editor functionality for notes
+    const toolbar = document.querySelector(".rich-text-toolbar");
+    const notesArea = document.getElementById("notes");
+
+    toolbar.addEventListener("click", e => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const cmd = btn.dataset.command;
+      if (!cmd) return;
+      if (cmd === "createLink") {
+        let url = prompt("Enter the link URL:", "https://");
+        if (url) {
+          document.execCommand(cmd, false, url);
+        }
+      } else {
+        document.execCommand(cmd, false, null);
+      }
+      notesArea.focus();
+    });
+
+    // Prevent pasting styled content in Notes => only plain text
+    notesArea.addEventListener("paste", e => {
+      e.preventDefault();
+      const text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertText", false, text);
+    });
+
+    // CAPTCHA generation & validation
+    const captchaTextElem = document.getElementById("captchaText");
+    const captchaInput = document.getElementById("captchaInput");
+
+    function generateCaptcha() {
+      const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let captcha = "";
+      // Length 6 captcha
+      while (captcha.length < 6) {
+        let char = charset.charAt(Math.floor(Math.random() * charset.length));
+        // Avoid similar/confusing letters or numbers like I, l, 1, O, 0 - replace with a custom safe captcha like shown "TIDAWO"
+        captcha += char;
+      }
+      return captcha.toUpperCase();
+    }
+
+    // In example, captcha was "TIDAWO" (like watermark text), so we preset this as default captcha
+    // But allowing refresh for practical usage
+    let currentCaptcha = "TIDAWO";
+
+    function updateCaptcha() {
+      currentCaptcha = generateCaptcha();
+      captchaTextElem.textContent = currentCaptcha;
+    }
+
+    captchaTextElem.addEventListener("click", () => {
+      updateCaptcha();
+      captchaInput.value = "";
+      captchaInput.focus();
+    });
+
+    captchaTextElem.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        updateCaptcha();
+        captchaInput.value = "";
+        captchaInput.focus();
+      }
+    });
+
+    // Initialize captcha text
+    captchaTextElem.textContent = currentCaptcha;
+
+    // Form submission validation
+    const form = document.getElementById("employeeForm");
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      // Validate required inputs:
+      // FirstName (text), Notes (non-empty), CAPTCHA match (case insensitive)
+      const firstName = form.firstName.value.trim();
+      const notes = notesArea.textContent.trim();
+      const captchaVal = captchaInput.value.trim().toUpperCase();
+
+      let errors = [];
+
+      if (!firstName) {
+        errors.push("First Name is required.");
+      }
+      if (!notes) {
+        errors.push("Notes cannot be empty.");
+      }
+      if (!captchaVal) {
+        errors.push("Please enter the CAPTCHA.");
+      } else if (captchaVal !== currentCaptcha) {
+        errors.push("CAPTCHA does not match.");
+      }
+
+      if (errors.length > 0) {
+        alert("Please fix the following errors:\n - " + errors.join("\n - "));
+        return;
+      }
+
+      // Gather form data (including notes as HTML content)
+      const formData = new FormData(form);
+      formData.set("notes", notesArea.innerHTML);
+
+      // Show collected data as demonstration (could be sent to a server)
+      let output = "Form data submitted:\n";
+      for (const pair of formData.entries()) {
+        output += `${pair[0]}: ${pair[1]}\n`;
+      }
+      alert(output);
+    });
+  </script>
+</body>
+</html>
