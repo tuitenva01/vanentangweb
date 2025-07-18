@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý sinh viên</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+    }
+
+    h2 {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    /* ==== FORM ==== */
+    form {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 450px;
+    }
+
+    label {
+      display: inline-block;
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea {
+      width: 270px;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    /* ==== TABLE ==== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    thead {
+      background-color: #343a40;
+      color: white;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .actions a {
+      text-decoration: none;
+      color: #007bff;
+      margin: 0 5px;
+    }
+
+    .actions a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Thêm Sinh Viên</h2>
+  <form>
+    <label for="masv">Mã sinh viên:</label>
+    <input type="text" id="masv" name="masv" required><br>
+
+    <label for="hoten">Họ và tên:</label>
+    <input type="text" id="hoten" name="hoten" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="ngaysinh">Ngày sinh:</label>
+    <input type="date" id="ngaysinh" name="ngaysinh"><br>
+
+    <label>Giới tính:</label>
+    <input type="radio" id="nam" name="gioitinh" value="Nam">
+    <label for="nam">Nam</label>
+    <input type="radio" id="nu" name="gioitinh" value="Nữ">
+    <label for="nu">Nữ</label><br><br>
+
+    <label for="ghichu">Ghi chú:</label><br>
+    <textarea id="ghichu" name="ghichu" rows="4" cols="40"></textarea><br>
+
+    <button type="submit">Thêm sinh viên</button>
+  </form>
+
+  <h2>Danh Sách Sinh Viên</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Mã SV</th>
+        <th>Họ tên</th>
+        <th>Email</th>
+        <th>Giới tính</th>
+        <th>Ngày sinh</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>SV001</td>
+        <td>Nguyễn Văn A</td>
+        <td>a@gmail.com</td>
+        <td>Nam</td>
+        <td>2001-05-10</td>
+        <td class="actions"><a href="#">Sửa</a> | <a href="#">Xoá</a></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>SV002</td>
+        <td>Trần Thị B</td>
+        <td>b@gmail.com</td>
+        <td>Nữ</td>
+        <td>2002-03-15</td>
+        <td class="actions"><a href="#">Sửa</a> | <a href="#">Xoá</a></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>SV003</td>
+        <td>Lê Văn C</td>
+        <td>c@gmail.com</td>
+        <td>Nam</td>
+        <td>2003-01-20</td>
+        <td class="actions"><a href="#">Sửa</a> | <a href="#">Xoá</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
