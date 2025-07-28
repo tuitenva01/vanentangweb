@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiết 6 - Buổi 4+5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Quản lý sinh viên</h2>
+    </nav>
+    <main class="container">
+        <section class="form-section">
+            <h3 style="text-align: center">Form thêm sinh viên</h3>
+            <form>
+                <div>
+                    <label for="maSV">Mã sinh viên:</label>
+                    <input type="text" id="maSV" name="maSV" required>
+                </div>
+                
+                <div>
+                    <label for="hoTen">Họ và tên:</label>
+                    <input type="text" id="hoTen" name="hoTen" required>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>   
+                
+                <div>
+                    <label for="ngaySinh">Ngày sinh:</label>
+                    <input type="date" id="ngaySinh" name="ngaySinh">
+                </div>              
+                
+                <div>
+                    <label for="gioiTinh">Giới tính:</label>
+                    <input type="radio" id="nam" name="gioiTinh" value="Nam">
+                    <label for="nam">Nam</label>
+                    
+                    <input type="radio" id="nu" name="gioiTinh" value="Nữ">
+                    <label for="nu">Nữ</label>
+                </div>
+                
+                <div>
+                    <label for="ghiChu">Ghi chú:</label>
+                    <textarea id="ghiChu" name="ghiChu" rows="4" cols="30"></textarea>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button type="submit" class="btn">Thêm sinh viên</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="table-section">
+            <h3 style="text-align: center;">Danh sách sinh viên</h3>
+            <table border="1" cellpadding="5" cellspacing="0" style="text-align: center;width: 100%;">
+                <thead style="background-color: #f3c78e;">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã SV</th>
+                    <th>Họ tên</th>
+                    <th>Email</th>
+                    <th>Giới tính</th>
+                    <th>Ngày sinh</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2251272664</td>
+                    <td>Nguyễn Danh Việt Anh</td>
+                    <td>tuitenvakk@gmail.com</td>
+                    <td>Nam</td>
+                    <td>01-02-2004</td>
+                    <td>
+                    <button class="btn">Sửa</button>
+                    <button class="btn">Xóa</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>99999999</td>
+                    <td>David jonny</td>
+                    <td>trieutulong@gmail.com</td>
+                    <td>Nam</td>
+                    <td>2004-09-27</td>
+                    <td>
+                    <button class="btn">Sửa</button>
+                    <button class="btn">Xóa</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>686868686</td>
+                    <td>ỉonman</td>
+                    <td>ironman@gmail.com</td>
+                    <td>Nữ</td>
+                    <td>1990-01-29</td>
+                    <td>
+                    <button class="btn">Sửa</button>
+                    <button class="btn">Xóa</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
