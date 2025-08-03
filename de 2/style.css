@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  font-weight: bold;
+}
+
+.header-right a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.header-right input {
+  padding: 5px;
+}
+
+.container {
+  margin: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.export-btn {
+  background-color: #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #111;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.actions button {
+  margin-right: 5px;
+}
+
+footer {
+  background: #002a7f;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: lightblue;
+}
