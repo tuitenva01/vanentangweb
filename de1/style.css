@@ -1,0 +1,11 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #eef7ff;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
