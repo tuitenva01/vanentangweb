@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản lý nhân viên</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <div class="header">
+    <span>Trường Đại học Thủy lợi</span>
+    <div class="nav">
+      <span>Trang chủ</span>
+      <span>Quản lý cửa hàng</span>
+      <input type="text" placeholder="Nhập nội dung tìm kiếm">
+      <button>Tìm kiếm</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="toolbar">
+      <button id="btnAdd" class="add-button">
+        <i class="fas fa-plus-circle"></i> THÊM MỚI
+      </button>
+      <button>XUẤT RA FILE</button>
+      <input type="text" id="searchInput" placeholder="Tìm kiếm theo Tên">
+      <select id="limitSelect">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20" selected>20</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Hành động</th>
+          <th>STT</th>
+          <th>Tên</th>
+          <th>Họ đệm</th>
+          <th>Địa chỉ</th>
+          <th>Hoạt động</th>
+        </tr>
+      </thead>
+      <tbody id="employeeTable">
+      </tbody>
+    </table>
+
+    <div id="paginationControls"></div>
+    <p class="footer-note">Kết quả 1 đến 4</p>
+  </div>
+
+  <div class="popup" id="popupForm">
+    <div class="popup-content">
+      <h3>Thêm Nhân viên</h3>
+      <span class="close">&times;</span>
+      <form id="employeeForm">
+        <label for="name">Tên</label>
+        <input type="text" id="name" placeholder="Tên" maxlength="15" required>
+        <div class="invalid-feedback" id="nameError"></div>
+
+        <label for="surname">Họ đệm</label>
+        <input type="text" id="surname" placeholder="Họ đệm" maxlength="20" required>
+        <div class="invalid-feedback" id="surnameError"></div>
+
+        <label for="address">Địa chỉ</label>
+        <input type="text" id="address" placeholder="Địa chỉ" maxlength="50" required>
+        <div class="invalid-feedback" id="addressError"></div>
+
+        <div class="popup-buttons">
+          <button type="button" id="cancel">Hủy</button>
+          <button type="submit" class="add-confirm">Thêm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <strong>TRƯỜNG ĐẠI HỌC THỦY LỢI</strong><br>
+      Địa chỉ: 175 Tây Sơn, Đống Đa, Hà Nội<br>
+      Điện thoại: (024) 38522201 – Fax: (024) 35633351<br>
+      Email: phonghcth@tlu.edu.vn
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
